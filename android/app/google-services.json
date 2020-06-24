@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "831509321598",
+    "firebase_url": "https://testinglogin-fc6e6.firebaseio.com",
+    "project_id": "testinglogin-fc6e6",
+    "storage_bucket": "testinglogin-fc6e6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:831509321598:android:bc0e10c27f8d3d4992c52f",
+        "android_client_info": {
+          "package_name": "com.example.skeleton_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "831509321598-ae45jp5e2m3cg8a99cah04rt7agbidr8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmO9Sr4-hmXYnPBl6ZEQ5LEBGs1korTeA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "831509321598-ae45jp5e2m3cg8a99cah04rt7agbidr8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
