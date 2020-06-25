@@ -1,5 +1,6 @@
 # Flutter-Firebase-Auth
 A new Flutter project.
+
 Authentication: SignIn &amp; SignUp integrated with Firebase for Flutter.
 
 ## Getting Started
