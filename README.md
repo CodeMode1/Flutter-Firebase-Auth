@@ -1,3 +1,6 @@
+# Flutter-Firebase-Auth
+Authentication: SignIn &amp; SignUp integrated with Firebase for Flutter.
+
 # skeleton_app
 
 A new Flutter project.
