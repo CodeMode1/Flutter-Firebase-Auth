@@ -89,17 +89,17 @@ class _SignUpState extends State<SignUp> {
     );
   }
 
+  // Signs up to Firebase.
   Future<void> signUp() async {
     // Retrieve the unique identifier of the form.
     final formState = _formKey.currentState;
     // Validate all form fields of form and returns true if no errors.
     if (formState.validate()) {
-      // Login to firebase
-      // Saves every field of the form,
-      // Then callback onSaved gets called and password/email assigned to their backing property.
+      // Saves every field of the form
+      formState.save();
       try {
         print("try");
-        formState.save();
+
         // Creates user.
         AuthResult res = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: _email, password: _password);
         var user = res.user;

@@ -85,16 +85,15 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
+  // Sign in to Firebase.
   Future<void> signIn() async {
     // Retrieve the unique identifier of the form.
     final formState = _formKey.currentState;
     // Validate all form fields of form and returns true if no errors.
     if (formState.validate()) {
-      // Login to firebase
-      // Saves every field of the form,
-      // Then callback onSaved gets called and password/email assigned to their backing property.
+      // Saves every field of the form.
+      formState.save();
       try {
-        formState.save();
         AuthResult res = await FirebaseAuth.instance.signInWithEmailAndPassword(email: _email, password: _password);
         var user = res.user;
         print("try");
