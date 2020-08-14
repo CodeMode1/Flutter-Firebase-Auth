@@ -44,6 +44,8 @@ class _HomeState extends State<Home> {
   }
 
   Row checkRole(DocumentSnapshot snapshot) {
+    // TODO: At signup, push the new user to the users collection with default run
+    // TODO: to fix the bug at runtime after creating and login new user (users collection mapping to firebase users).
     if (snapshot.data['role'] == 'admin') {
       return adminPage(snapshot);
     } else {
