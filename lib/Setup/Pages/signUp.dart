@@ -3,6 +3,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+// Manage collections with FlutterFire: https://firebase.flutter.dev/docs/firestore/usage/#collections--documents
 
 // State class. Holds the application state.
 // Is immutable.
