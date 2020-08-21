@@ -44,8 +44,9 @@ class _HomeState extends State<Home> {
   }
 
   Row checkRole(DocumentSnapshot snapshot) {
-    // TODO: At signup, push the new user to the users collection with default run
+    // TODO: At signup, push the new user to the users collection with default role
     // TODO: to fix the bug at runtime after creating and login new user (users collection mapping to firebase users).
+    // Manage collections with FlutterFire: https://firebase.flutter.dev/docs/firestore/usage/#collections--documents
     if (snapshot.data['role'] == 'admin') {
       return adminPage(snapshot);
     } else {

@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 // Is immutable.
 // A new instance of _SignUpState is created for each
 // SignUp widget in the tree.
-// Then _SignUpState holds the state too. 
+// Then _SignUpState holds the state too.
 //    _SignUpState is mutable: is the class manipulating, modifying the state.
 //    Also rebuilds (repaints) the widget tree with the new state.
 class SignUp extends StatefulWidget {
@@ -19,13 +19,12 @@ class SignUp extends StatefulWidget {
 
   // A new instance of _SignUpState is created for each
   // SignUp widget in the tree.
-    @override
+  @override
   _SignUpState createState() => _SignUpState();
 }
 
 class _SignUpState extends State<SignUp> {
-
-    // Underscore mark fields as private in Dart.
+  // Underscore mark fields as private in Dart.
   String _email, _password; // flutteruser@test.ca - Test123*
   // Key to use as a unique identifier key in the form.
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -61,21 +60,17 @@ class _SignUpState extends State<SignUp> {
                 return null;
               },
               onSaved: (input) => _email = input,
-              decoration: InputDecoration(
-                labelText: "Email"
-              ),
+              decoration: InputDecoration(labelText: "Email"),
             ),
             TextFormField(
               validator: (input) {
                 if (input.length < 6) {
                   return "Your password needs to be at least 6 characters";
-                } 
+                }
                 return null;
               },
               onSaved: (input) => _password = input,
-              decoration: InputDecoration(
-                labelText: "Password"
-              ),
+              decoration: InputDecoration(labelText: "Password"),
               // Have the dots formatting characters.
               obscureText: true,
             ),
@@ -101,14 +96,15 @@ class _SignUpState extends State<SignUp> {
         print("try");
 
         // Creates user.
-        AuthResult res = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: _email, password: _password);
+        AuthResult res = await FirebaseAuth.instance
+            .createUserWithEmailAndPassword(email: _email, password: _password);
         var user = res.user;
         user.sendEmailVerification(); // Initiates email verification for the user.
         // Navigate to home widget upon succesful login.
         // todo Display for the user that we sent an email.
         Navigator.of(context).pop();
         // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage(title: "Sign In"), fullscreenDialog: true)));
-      } catch(e) {
+      } catch (e) {
         print(e.message);
       }
     }
