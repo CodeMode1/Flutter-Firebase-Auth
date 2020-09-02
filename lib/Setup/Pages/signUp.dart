@@ -3,7 +3,8 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-// Manage collections with FlutterFire: https://firebase.flutter.dev/docs/firestore/usage/#collections--documents
+import 'package:cloud_firestore/cloud_firestore.dart';
+// TODO next step: Manage collections with FlutterFire: https://firebase.flutter.dev/docs/firestore/usage#collections--documents
 
 // State class. Holds the application state.
 // Is immutable.
@@ -97,7 +98,7 @@ class _SignUpState extends State<SignUp> {
         print("try");
 
         // Creates user.
-        AuthResult res = await FirebaseAuth.instance
+        UserCredential res = await FirebaseAuth.instance
             .createUserWithEmailAndPassword(email: _email, password: _password);
         var user = res.user;
         user.sendEmailVerification(); // Initiates email verification for the user.

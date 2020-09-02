@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:skeleton_app/Setup/Pages/home.dart';
@@ -57,21 +56,17 @@ class _LoginPageState extends State<LoginPage> {
                 return null;
               },
               onSaved: (input) => _email = input,
-              decoration: InputDecoration(
-                labelText: "Email"
-              ),
+              decoration: InputDecoration(labelText: "Email"),
             ),
             TextFormField(
               validator: (input) {
                 if (input.length < 6) {
                   return "Your password needs to be at least 6 characters";
-                } 
+                }
                 return null;
               },
               onSaved: (input) => _password = input,
-              decoration: InputDecoration(
-                labelText: "Password"
-              ),
+              decoration: InputDecoration(labelText: "Password"),
               // Have the dots formatting characters.
               obscureText: true,
             ),
@@ -94,12 +89,14 @@ class _LoginPageState extends State<LoginPage> {
       // Saves every field of the form.
       formState.save();
       try {
-        AuthResult res = await FirebaseAuth.instance.signInWithEmailAndPassword(email: _email, password: _password);
+        UserCredential res = await FirebaseAuth.instance
+            .signInWithEmailAndPassword(email: _email, password: _password);
         var user = res.user;
         print("try");
         // Navigate to home widget upon succesful login.
-        Navigator.push(context, MaterialPageRoute(builder: (context) => Home(user: user)));
-      } catch(e) {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Home(user: user)));
+      } catch (e) {
         print(e.message);
       }
     }

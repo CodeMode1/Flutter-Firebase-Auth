@@ -7,7 +7,7 @@ class Home extends StatefulWidget {
   const Home({Key key, @required this.user}) : super(key: key);
 
   // Gets passed by the ctr.
-  final FirebaseUser user;
+  final User user;
 
   @override
   _HomeState createState() => _HomeState();
@@ -22,9 +22,9 @@ class _HomeState extends State<Home> {
           title: Text("${widget.user.email}"),
         ),
         body: StreamBuilder<DocumentSnapshot>(
-            stream: Firestore.instance
+            stream: FirebaseFirestore.instance
                 .collection("users")
-                .document(widget.user.uid)
+                .doc(widget.user.uid)
                 .snapshots(),
             builder: (BuildContext context,
                 AsyncSnapshot<DocumentSnapshot> asyncSnapshot) {
@@ -46,7 +46,8 @@ class _HomeState extends State<Home> {
   Row checkRole(DocumentSnapshot snapshot) {
     // TODO: At signup, push the new user to the users collection with default role
     // TODO: to fix the bug at runtime after creating and login new user (users collection mapping to firebase users).
-    if (snapshot.data['role'] == 'admin') {
+    // TODO: data() is null
+    if (snapshot.data()["role"] == "admin") {
       return adminPage(snapshot);
     } else {
       return userPage(snapshot);
@@ -55,12 +56,13 @@ class _HomeState extends State<Home> {
 
   Row adminPage(DocumentSnapshot snapshot) {
     return Row(children: <Widget>[
-      Text('Role: ${snapshot.data['role']}'),
-      Text('UserName: ${snapshot.data['name']}')
+      Text('Role: ${snapshot.data()["role"]}'),
+      Text('UserName: ${snapshot.data()["name"]}')
     ]);
   }
 
   Row userPage(DocumentSnapshot snapshot) {
-    return Row(children: <Widget>[Text('UserName: ${snapshot.data['name']}')]);
+    return Row(
+        children: <Widget>[Text('UserName: ${snapshot.data()["name"]}')]);
   }
 }
