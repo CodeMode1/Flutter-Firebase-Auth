@@ -21,6 +21,8 @@ class _HomeState extends State<Home> {
         appBar: AppBar(
           title: Text("${widget.user.email}"),
         ),
+        // TODO Document & Query snapshots
+        // https://firebase.flutter.dev/docs/firestore/usage#document--query-snapshots
         body: StreamBuilder<DocumentSnapshot>(
             stream: FirebaseFirestore.instance
                 .collection("users")
